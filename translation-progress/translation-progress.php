@@ -504,8 +504,8 @@ function tp_progress_page() {
                         
                         // 使用与进度条相同的表名生成方式
                         $table_name = $wpdb->prefix . 'trp_dictionary_' . 
-                                     str_replace('-', '_', esc_sql($default_lang)) . '_' . 
-                                     str_replace('-', '_', esc_sql($target_lang));
+                          strtolower(str_replace('-', '_', esc_sql($default_lang))) . '_' . 
+                          strtolower(str_replace('-', '_', esc_sql($target_lang)));
                         
                         // 获取记录数（直接尝试查询，如果表不存在会返回错误）
                         $total_records = $wpdb->get_var("SELECT COUNT(*) FROM {$table_name}");
@@ -675,8 +675,8 @@ function display_translation_progress($settings) {
         if ($target_lang === $default_lang) continue;
         
         $table_name = $wpdb->prefix . 'trp_dictionary_' . 
-                     str_replace('-', '_', esc_sql($default_lang)) . '_' . 
-                     str_replace('-', '_', esc_sql($target_lang));
+              strtolower(str_replace('-', '_', esc_sql($default_lang))) . '_' . 
+              strtolower(str_replace('-', '_', esc_sql($target_lang)));
         
         // 获取翻译统计
         $total_count = $wpdb->get_var("SELECT COUNT(*) FROM {$table_name}");
